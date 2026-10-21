@@ -1,0 +1,644 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Blog Details | MyBlog</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- Bootstrap Icons -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+        rel="stylesheet"
+    >
+
+    <style>
+        body {
+            background-color: #f7f8fc;
+            font-family: Arial, sans-serif;
+            color: #252b3b;
+        }
+
+        .navbar {
+            background-color: #ffffff;
+        }
+
+        .navbar-brand {
+            font-size: 27px;
+            font-weight: 800;
+        }
+
+        .article-container {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .category-badge {
+            display: inline-block;
+            background: #e8edff;
+            color: #3158c9;
+            padding: 7px 15px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .article-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -1.5px;
+        }
+
+        .article-subtitle {
+            font-size: 18px;
+            color: #747b8c;
+            line-height: 1.8;
+        }
+
+        .author-avatar {
+            width: 48px;
+            height: 48px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .featured-image {
+            width: 100%;
+            height: 460px;
+            object-fit: cover;
+            border-radius: 18px;
+        }
+
+        .article-content {
+            font-size: 17px;
+            line-height: 1.9;
+            color: #454b5a;
+        }
+
+        .article-content h2 {
+            font-size: 28px;
+            font-weight: 750;
+            color: #252b3b;
+            margin-top: 35px;
+            margin-bottom: 15px;
+        }
+
+        .article-content h3 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #252b3b;
+            margin-top: 25px;
+        }
+
+        .article-content blockquote {
+            border-left: 4px solid #3158c9;
+            padding: 15px 22px;
+            background: #eef2ff;
+            border-radius: 0 10px 10px 0;
+            color: #354a86;
+            font-style: italic;
+            margin: 25px 0;
+        }
+
+        .share-btn {
+            width: 42px;
+            height: 42px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border: 1px solid #dee2e6;
+            background: white;
+            color: #343a40;
+            text-decoration: none;
+        }
+
+        .share-btn:hover {
+            background: #3158c9;
+            color: white;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 8px 14px;
+            margin: 4px;
+            border-radius: 20px;
+            background: #ffffff;
+            border: 1px solid #dee2e6;
+            color: #555e70;
+            font-size: 13px;
+            text-decoration: none;
+        }
+
+        .related-card {
+            border: none;
+            border-radius: 14px;
+            overflow: hidden;
+            height: 100%;
+            transition: transform 0.25s ease;
+        }
+
+        .related-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .related-image {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+        }
+
+        .author-box {
+            background: white;
+            border: 1px solid #e9ebf1;
+            border-radius: 16px;
+        }
+
+        footer {
+            background: white;
+        }
+
+        @media (max-width: 576px) {
+            .featured-image {
+                height: 260px;
+            }
+
+            .article-content {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg border-bottom sticky-top">
+        <div class="container">
+
+            <a class="navbar-brand text-primary" href="posts.html">
+                MyBlog<span class="text-dark">.</span>
+            </a>
+
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarMenu"
+                aria-controls="navbarMenu"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarMenu">
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="posts.html">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="posts.html">Posts</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="btn btn-primary rounded-pill px-4"
+                           href="posts.html">
+                            All Articles
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Breadcrumb -->
+    <div class="container pt-4">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb small">
+                <li class="breadcrumb-item">
+                    <a href="posts.html" class="text-decoration-none">
+                        Home
+                    </a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="posts.html" class="text-decoration-none">
+                        Blog Posts
+                    </a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    Article Details
+                </li>
+            </ol>
+        </nav>
+    </div>
+
+
+    <!-- Article Header -->
+    <header class="container py-4">
+        <div class="article-container">
+
+            <span class="category-badge mb-3">
+                WEB DEVELOPMENT
+            </span>
+
+            <h1 class="article-title mt-3 mb-3">
+                Getting Started with Django: A Beginner's Guide
+            </h1>
+
+            <p class="article-subtitle mb-4">
+                Learn how Django works, understand its architecture,
+                and discover how to build powerful web applications
+                using Python.
+            </p>
+
+            <!-- Author and Article Information -->
+            <div class="d-flex flex-wrap align-items-center
+                        justify-content-between gap-3 mb-4">
+
+                <div class="d-flex align-items-center gap-3">
+
+                    <img
+                        src="https://i.pravatar.cc/100?img=12"
+                        class="author-avatar"
+                        alt="Author profile"
+                    >
+
+                    <div>
+                        <div class="fw-bold">Jagadesh Varma</div>
+                        <small class="text-secondary">
+                            October 21, 2026 · 8 min read
+                        </small>
+                    </div>
+
+                </div>
+
+                <div class="d-flex gap-2 align-items-center">
+                    <a href="#" class="share-btn" aria-label="Share on Facebook">
+                        <i class="bi bi-facebook"></i>
+                    </a>
+
+                    <a href="#" class="share-btn" aria-label="Share on LinkedIn">
+                        <i class="bi bi-linkedin"></i>
+                    </a>
+
+                    <a href="#" class="share-btn" aria-label="Share on X">
+                        <i class="bi bi-twitter-x"></i>
+                    </a>
+
+                    <a href="#" class="share-btn" aria-label="Share by email">
+                        <i class="bi bi-envelope"></i>
+                    </a>
+                </div>
+
+            </div>
+
+            <hr class="text-secondary">
+
+        </div>
+    </header>
+
+
+    <!-- Featured Image -->
+    <section class="container mb-5">
+        <div class="article-container">
+
+            <img
+                src="https://picsum.photos/seed/djangodetail/1200/650"
+                class="featured-image"
+                alt="Laptop displaying a web development workspace"
+            >
+
+            <p class="text-secondary small text-center mt-2">
+                Building modern web applications with Django and Python.
+            </p>
+
+        </div>
+    </section>
+
+
+    <!-- Article Content -->
+    <main class="container">
+        <div class="article-container">
+
+            <article class="article-content">
+
+                <p>
+                    Django is a powerful, high-level Python web framework
+                    designed to help developers build secure and maintainable
+                    web applications quickly. It provides many built-in
+                    features, including URL routing, database integration,
+                    authentication, and an administration interface.
+                </p>
+
+                <p>
+                    Whether you are creating a personal blog, a portfolio,
+                    or a large web application, Django provides a structured
+                    way to organize your code and manage application data.
+                </p>
+
+
+                <h2>1. What Is Django?</h2>
+
+                <p>
+                    Django is an open-source web framework written in Python.
+                    It follows the Model-Template-View (MTV) architectural
+                    pattern, which separates data handling, presentation,
+                    and request-processing logic.
+                </p>
+
+                <blockquote>
+                    Django helps developers focus on building application
+                    features instead of repeatedly implementing common
+                    web development functionality.
+                </blockquote>
+
+
+                <h2>2. Understanding Django Project Structure</h2>
+
+                <p>
+                    A Django project can contain multiple apps. Each app
+                    handles a particular feature, such as blog posts,
+                    user accounts, comments, or categories.
+                </p>
+
+                <h3>Models</h3>
+
+                <p>
+                    Models define your data structure. For example, a blog
+                    post model can contain a title, article content,
+                    author, and publication date. Django's ORM allows you
+                    to work with database records through Python.
+                </p>
+
+                <h3>Views</h3>
+
+                <p>
+                    Views process incoming requests and return responses.
+                    They can retrieve blog posts, validate user input,
+                    or prepare data for a template.
+                </p>
+
+                <h3>Templates</h3>
+
+                <p>
+                    Templates define how information is displayed to users.
+                    HTML, CSS, and Bootstrap can be used to build a
+                    responsive and attractive blog interface.
+                </p>
+
+                <h3>URLs</h3>
+
+                <p>
+                    URL patterns connect incoming browser requests to
+                    the appropriate views. For example, a posts page
+                    displays a list of articles, while a details page
+                    displays a specific article.
+                </p>
+
+
+                <h2>3. Why Use Django for a Blog Website?</h2>
+
+                <p>
+                    Django provides many features that make it suitable
+                    for blog applications and other content-driven websites.
+                </p>
+
+                <ul>
+                    <li>Built-in administration interface for managing posts.</li>
+                    <li>Database support through the Django ORM.</li>
+                    <li>Authentication and permission functionality.</li>
+                    <li>URL routing and HTML template rendering.</li>
+                    <li>Support for building REST APIs using Django REST Framework.</li>
+                </ul>
+
+
+                <h2>4. Conclusion</h2>
+
+                <p>
+                    Django is a useful framework for building a blog from
+                    the ground up. Start with displaying posts, then add
+                    features such as post creation, editing, deletion,
+                    categories, search, comments, and user authentication.
+                </p>
+
+                <p>
+                    With consistent practice, you can turn a simple blog
+                    into a complete content management application.
+                </p>
+
+            </article>
+
+
+            <!-- Tags -->
+            <div class="mt-5 pt-4 border-top">
+                <h6 class="fw-bold mb-3">Related Tags</h6>
+
+                <a href="#" class="tag">Django</a>
+                <a href="#" class="tag">Python</a>
+                <a href="#" class="tag">Web Development</a>
+                <a href="#" class="tag">Programming</a>
+                <a href="#" class="tag">Tutorial</a>
+            </div>
+
+
+            <!-- Author Information -->
+            <div class="author-box p-4 mt-5">
+                <div class="d-flex flex-column flex-sm-row
+                            align-items-sm-center gap-3">
+
+                    <img
+                        src="https://i.pravatar.cc/120?img=12"
+                        class="author-avatar"
+                        style="width: 75px; height: 75px;"
+                        alt="Author profile"
+                    >
+
+                    <div>
+                        <small class="text-primary fw-bold">
+                            ABOUT THE AUTHOR
+                        </small>
+
+                        <h5 class="fw-bold mt-1 mb-2">
+                            Jagadesh Varma
+                        </h5>
+
+                        <p class="text-secondary mb-0">
+                            Software developer interested in Python,
+                            Django, web technologies, and sharing
+                            programming knowledge.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+
+    <!-- Related Articles -->
+    <section class="container py-5 mt-4">
+
+        <div class="d-flex justify-content-between
+                    align-items-center mb-4">
+
+            <div>
+                <h2 class="fw-bold">Related Articles</h2>
+                <p class="text-secondary mb-0">
+                    Continue exploring more tutorials.
+                </p>
+            </div>
+
+            <a href="posts.html"
+               class="btn btn-outline-primary rounded-pill">
+                View All
+            </a>
+
+        </div>
+
+        <div class="row g-4">
+
+            <!-- Related Post 1 -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card related-card shadow-sm">
+
+                    <img
+                        src="https://picsum.photos/seed/pythonrelated/600/400"
+                        class="related-image"
+                        alt="Python programming"
+                    >
+
+                    <div class="card-body p-4">
+                        <span class="category-badge">PYTHON</span>
+
+                        <h5 class="fw-bold mt-3">
+                            Python Fundamentals for Beginners
+                        </h5>
+
+                        <p class="text-secondary">
+                            Understand variables, loops, functions,
+                            and Python data structures.
+                        </p>
+
+                        <a href="#" class="text-primary fw-semibold
+                                            text-decoration-none">
+                            Read Article →
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- Related Post 2 -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card related-card shadow-sm">
+
+                    <img
+                        src="https://picsum.photos/seed/djangomodels/600/400"
+                        class="related-image"
+                        alt="Database models"
+                    >
+
+                    <div class="card-body p-4">
+                        <span class="category-badge">DJANGO</span>
+
+                        <h5 class="fw-bold mt-3">
+                            Django Models and Databases
+                        </h5>
+
+                        <p class="text-secondary">
+                            Learn how models, migrations, and the ORM
+                            work together.
+                        </p>
+
+                        <a href="#" class="text-primary fw-semibold
+                                            text-decoration-none">
+                            Read Article →
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- Related Post 3 -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card related-card shadow-sm">
+
+                    <img
+                        src="https://picsum.photos/seed/bootstraprelated/600/400"
+                        class="related-image"
+                        alt="Bootstrap web design"
+                    >
+
+                    <div class="card-body p-4">
+                        <span class="category-badge">BOOTSTRAP</span>
+
+                        <h5 class="fw-bold mt-3">
+                            Responsive Websites with Bootstrap
+                        </h5>
+
+                        <p class="text-secondary">
+                            Build responsive layouts and attractive
+                            interfaces with Bootstrap utilities.
+                        </p>
+
+                        <a href="#" class="text-primary fw-semibold
+                                            text-decoration-none">
+                            Read Article →
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="border-top py-4 mt-4" id="about">
+        <div class="container text-center">
+
+            <a href="posts.html"
+               class="text-primary fw-bold fs-4 text-decoration-none">
+                MyBlog.
+            </a>
+
+            <p class="text-secondary mt-2 mb-2">
+                Sharing knowledge, one post at a time.
+            </p>
+
+            <small class="text-secondary">
+                &copy; 2026 MyBlog. All rights reserved.
+            </small>
+
+        </div>
+    </footer>
+
+
+    <!-- Bootstrap JavaScript -->
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+    </script>
+
+</body>
+</html>
