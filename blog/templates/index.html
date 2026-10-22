@@ -11,7 +11,10 @@ base.html is path name
     <section class="hero text-center">
         <div class="container">
             <span class="badge bg-primary rounded-pill px-3 py-2 mb-3">
-                      {{blog_tit}}
+                      {{blog_tit | upper}}
+                      {{blog_tit | length}}
+                      {{blog_tit | truncatewords:1}}
+
             </span>
 
             <h1>
@@ -36,6 +39,7 @@ base.html is path name
             </div>
         </div>
     </section>
+ 
 
     <!-- Blog Posts -->
     <section class="container py-5" id="posts">
@@ -47,234 +51,73 @@ base.html is path name
                     Explore our latest articles and tutorials.
                 </p>
             </div>
-            <span class="text-secondary">6 Articles</span>
+            <span class="text-secondary">{{post_list | length}} Posts</span>
         </div>
 
-        <div class="row g-4">
+        
+<div class="container">
+    <div class="row g-4">
 
-            <!-- Post 1 -->
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="card blog-card shadow-sm">
-                    <img src="https://picsum.photos/seed/python/600/400"
-                         class="blog-img" alt="Python programming">
+        {% for post in post_list %}
 
-                    <div class="card-body p-4 d-flex flex-column">
-                        <div class="mb-3">
-                            <span class="category">PROGRAMMING</span>
+        <div class="col-12 col-md-6 col-lg-4">
+
+            <div class="card blog-card shadow-sm h-100">
+
+                <img
+                    src="https://picsum.photos/seed/python/600/400"
+                    class="blog-img"
+                    alt="Python programming"
+                >
+
+                <div class="card-body p-3 d-flex flex-column">
+
+                    <h3 class="post-title">
+                        {{ post.title }}
+                    </h3>
+
+                    <p class="post-description">
+                        {{ post.content|truncatewords:20 }}
+                    </p>
+
+                    <div class="d-flex align-items-center mt-auto pt-3 border-top">
+
+                        <img
+                            src="https://i.pravatar.cc/100?img=12"
+                            class="author-img me-2"
+                            alt="Author"
+                        >
+
+                        <div class="flex-grow-1">
+                            <div class="fw-semibold">Rahul Sharma</div>
+                            <small class="text-secondary">
+                                Oct 15, 2026
+                            </small>
                         </div>
 
-                        <h3 class="post-title">
-                            Getting Started with Python
-                        </h3>
+                        <a href="#"
+                           class="btn btn-outline-primary btn-sm rounded-pill">
+                            Read More
+                        </a>
 
-                        <p class="post-description">
-                            Learn Python fundamentals, variables, data types,
-                            loops, functions, and object-oriented programming.
-                        </p>
-
-                        <div class="d-flex align-items-center mt-auto pt-3 border-top">
-                            <img src="https://i.pravatar.cc/100?img=12"
-                                 class="author-img me-3" alt="Author">
-
-                            <div class="flex-grow-1">
-                                <div class="fw-semibold">Rahul Sharma</div>
-                                <small class="text-secondary">Oct 15, 2026</small>
-                            </div>
-
-                            <a href="#" class="btn btn-outline-primary btn-sm rounded-pill">
-                                Read More
-                            </a>
-                        </div>
                     </div>
-                </div>
-            </div>
 
-            <!-- Post 2 -->
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="card blog-card shadow-sm">
-                    <img src="https://picsum.photos/seed/django/600/400"
-                         class="blog-img" alt="Django development">
-
-                    <div class="card-body p-4 d-flex flex-column">
-                        <div class="mb-3">
-                            <span class="category">WEB DEVELOPMENT</span>
-                        </div>
-
-                        <h3 class="post-title">
-                            Introduction to Django
-                        </h3>
-
-                        <p class="post-description">
-                            Build powerful web applications with Django.
-                            Understand projects, apps, models, views, and URLs.
-                        </p>
-
-                        <div class="d-flex align-items-center mt-auto pt-3 border-top">
-                            <img src="https://i.pravatar.cc/100?img=11"
-                                 class="author-img me-3" alt="Author">
-
-                            <div class="flex-grow-1">
-                                <div class="fw-semibold">Priya Kumar</div>
-                                <small class="text-secondary">Oct 12, 2026</small>
-                            </div>
-
-                            <a href="#" class="btn btn-outline-primary btn-sm rounded-pill">
-                                Read More
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Post 3 -->
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="card blog-card shadow-sm">
-                    <img src="https://picsum.photos/seed/react/600/400"
-                         class="blog-img" alt="React development">
-
-                    <div class="card-body p-4 d-flex flex-column">
-                        <div class="mb-3">
-                            <span class="category">JAVASCRIPT</span>
-                        </div>
-
-                        <h3 class="post-title">
-                            Mastering React Basics
-                        </h3>
-
-                        <p class="post-description">
-                            Explore components, props, state, hooks, and
-                            reusable UI patterns with React.
-                        </p>
-
-                        <div class="d-flex align-items-center mt-auto pt-3 border-top">
-                            <img src="https://i.pravatar.cc/100?img=13"
-                                 class="author-img me-3" alt="Author">
-
-                            <div class="flex-grow-1">
-                                <div class="fw-semibold">Arun Reddy</div>
-                                <small class="text-secondary">Oct 10, 2026</small>
-                            </div>
-
-                            <a href="#" class="btn btn-outline-primary btn-sm rounded-pill">
-                                Read More
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Post 4 -->
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="card blog-card shadow-sm">
-                    <img src="https://picsum.photos/seed/database/600/400"
-                         class="blog-img" alt="Database technology">
-
-                    <div class="card-body p-4 d-flex flex-column">
-                        <div class="mb-3">
-                            <span class="category">DATABASE</span>
-                        </div>
-
-                        <h3 class="post-title">
-                            Understanding SQL Databases
-                        </h3>
-
-                        <p class="post-description">
-                            Discover tables, relationships, queries, joins,
-                            and database design fundamentals.
-                        </p>
-
-                        <div class="d-flex align-items-center mt-auto pt-3 border-top">
-                            <img src="https://i.pravatar.cc/100?img=14"
-                                 class="author-img me-3" alt="Author">
-
-                            <div class="flex-grow-1">
-                                <div class="fw-semibold">Sneha Patel</div>
-                                <small class="text-secondary">Oct 08, 2026</small>
-                            </div>
-
-                            <a href="#" class="btn btn-outline-primary btn-sm rounded-pill">
-                                Read More
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Post 5 -->
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="card blog-card shadow-sm">
-                    <img src="https://picsum.photos/seed/css/600/400"
-                         class="blog-img" alt="Web design">
-
-                    <div class="card-body p-4 d-flex flex-column">
-                        <div class="mb-3">
-                            <span class="category">DESIGN</span>
-                        </div>
-
-                        <h3 class="post-title">
-                            Modern CSS and Bootstrap
-                        </h3>
-
-                        <p class="post-description">
-                            Create responsive layouts, stylish cards,
-                            navigation bars, and beautiful websites.
-                        </p>
-
-                        <div class="d-flex align-items-center mt-auto pt-3 border-top">
-                            <img src="https://i.pravatar.cc/100?img=15"
-                                 class="author-img me-3" alt="Author">
-
-                            <div class="flex-grow-1">
-                                <div class="fw-semibold">Vikram Singh</div>
-                                <small class="text-secondary">Oct 05, 2026</small>
-                            </div>
-
-                            <a href="#" class="btn btn-outline-primary btn-sm rounded-pill">
-                                Read More
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Post 6 -->
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="card blog-card shadow-sm">
-                    <img src="https://picsum.photos/seed/career/600/400"
-                         class="blog-img" alt="Software development career">
-
-                    <div class="card-body p-4 d-flex flex-column">
-                        <div class="mb-3">
-                            <span class="category">CAREER</span>
-                        </div>
-
-                        <h3 class="post-title">
-                            Tips for Software Developers
-                        </h3>
-
-                        <p class="post-description">
-                            Improve your coding skills, build projects,
-                            practice interviews, and grow your career.
-                        </p>
-
-                        <div class="d-flex align-items-center mt-auto pt-3 border-top">
-                            <img src="https://i.pravatar.cc/100?img=16"
-                                 class="author-img me-3" alt="Author">
-
-                            <div class="flex-grow-1">
-                                <div class="fw-semibold">Anjali Rao</div>
-                                <small class="text-secondary">Oct 01, 2026</small>
-                            </div>
-
-                            <a href="#" class="btn btn-outline-primary btn-sm rounded-pill">
-                                Read More
-                            </a>
-                        </div>
-                    </div>
                 </div>
             </div>
 
         </div>
+
+        {% empty %}
+
+        <div class="col-12 text-center py-5">
+            <h4>No posts available</h4>
+        </div>
+
+        {% endfor %}
+
+    </div>
+</div>
+
 
         <!-- Pagination -->
         <nav class="mt-5" aria-label="Blog pages">
