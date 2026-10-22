@@ -1,14 +1,17 @@
+{% extends 'base.html'%}
 {% comment %} we need to extend the base html so we have using extends base.html
 base.html is path name
  {% endcomment %}
-{% extends 'base.html'%}
+
+
+
 {% comment %} content means base html we have given the dynamic content name {% endcomment %}
 {% block content %}
     <!-- Hero Section -->
     <section class="hero text-center">
         <div class="container">
             <span class="badge bg-primary rounded-pill px-3 py-2 mb-3">
-                WELCOME TO MYBLOG
+                      {{blog_title}}
             </span>
 
             <h1>
