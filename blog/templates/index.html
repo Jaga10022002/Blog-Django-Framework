@@ -58,6 +58,8 @@ base.html is path name
 <div class="container">
     <div class="row g-4">
 
+        {% if post_list%}
+
         {% for post in post_list %}
 
         <div class="col-12 col-md-6 col-lg-4">
@@ -95,7 +97,7 @@ base.html is path name
                             </small>
                         </div>
 
-                        <a href="#"
+                        <a href="{% url 'blog:details' post_id=post.id %}"
                            class="btn btn-outline-primary btn-sm rounded-pill">
                             Read More
                         </a>
@@ -107,6 +109,8 @@ base.html is path name
 
         </div>
 
+     
+
         {% empty %}
 
         <div class="col-12 text-center py-5">
@@ -114,6 +118,9 @@ base.html is path name
         </div>
 
         {% endfor %}
+           {%else%}
+        <p>No Posts Available</p>
+        {%endif%}
 
     </div>
 </div>
@@ -143,3 +150,8 @@ base.html is path name
     </section>
 
 {% endblock%}
+
+
+
+
+
