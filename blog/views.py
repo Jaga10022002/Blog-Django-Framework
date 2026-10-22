@@ -5,8 +5,8 @@ from django.urls import reverse
 
 # Create your views here.
 def index(request):
-    blog_title = "Jagadesh Latest Posts"
-    return render(request,'index.html',{'blog_title': blog_title})
+    blog_title = "Latest Posts"
+    return render(request,'index.html',{'blog_tit': blog_title})
     # return HttpResponse("HELLO WORLD YOU ARE AT BLOG INDEX!!")
 
 # dynamic url here we have to pass another parameter post_id from urls.py
