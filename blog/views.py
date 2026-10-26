@@ -20,19 +20,6 @@ def index(request):
     return render(request,'index.html',{'blog_tit': blog_title,'post_list':posts})
     # return HttpResponse("HELLO WORLD YOU ARE AT BLOG INDEX!!")
 
-# dynamic url here we have to pass another parameter post_id from urls.py
-# def details(request,post_id):
-#         post = next((item for item in posts if item['id']== int(post_id)),None)
-#         logger = logging.getLogger("Testing")
-#         # logger.debug(f'post variable is {post}')
-#         logger.debug("Post variable is %s", post)
-
-#         return render(request,'details.html',{'post': post})
-#     # return HttpResponse(f"This is the Post details Page. And ID is {post_id} ")
-
-# 
-
-
 def details(request, post_id):
     post = next(
         (item for item in posts if item['id'] == int(post_id)),
