@@ -25,14 +25,16 @@ def index(request):
     # return HttpResponse("HELLO WORLD YOU ARE AT BLOG INDEX!!")
 
 def details(request, post_id):
-    post = next(
-        (item for item in posts if item['id'] == int(post_id)),
-        None
-    )
+    # static data 
+    # post = next((item for item in posts if item['id'] == int(post_id)),None)
 
-    logger.debug("Post variable is %s", post)
+    # logger.debug("Post variable is %s", post)
+        # getting data from model by post id
+    post = Post.objects.get(pk = post_id)
 
     return render(request, 'details.html', {'post': post})
+
+
 
 # redirect
 def old_url_redirect(request):

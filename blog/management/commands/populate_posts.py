@@ -2,8 +2,11 @@ from blog.models import Post
 from django.core.management.base import BaseCommand
 
 
+
+
 class Command(BaseCommand):
     help = "This command inserts post data"
+    
 
     titles = [
     "Introduction to Python",
