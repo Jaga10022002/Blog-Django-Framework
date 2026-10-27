@@ -1,11 +1,18 @@
 from blog.models import Post
 from django.core.management.base import BaseCommand
+from typing import Any
+
 
 
 
 
 class Command(BaseCommand):
     help = "This command inserts post data"
+
+    def handle(self,*args:Any,**options:Any):
+        # delete exisiting table data
+        Post.objects.all().delete()
+
     
 
     titles = [

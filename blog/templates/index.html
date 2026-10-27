@@ -80,7 +80,7 @@ base.html is path name
                     </h3>
 
                     <p class="post-description">
-                        {{ post.content|truncatewords:20 }}
+                        {{ post.content | truncatechars:50}}
                     </p>
 
                     <div class="d-flex align-items-center mt-auto pt-3 border-top">
@@ -98,7 +98,7 @@ base.html is path name
                             </small>
                         </div>
 
-                        <a href="{% url 'blog:details' post_id=post.id %}"
+                        <a href="{% url 'blog:details' slug=post.slug %}"
                            class="btn btn-outline-primary btn-sm rounded-pill">
                             Read More
                         </a>

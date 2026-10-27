@@ -1,8 +1,9 @@
 from django.shortcuts import render,redirect
-from django.http import HttpResponse
+from django.http import HttpResponse,Http404
 from django.urls import reverse
 import logging
 from .models import Post
+
 
 logger = logging.getLogger("Testing")
 
@@ -24,14 +25,19 @@ def index(request):
     return render(request,'index.html',{'blog_tit': blog_title,'post_list':posts})
     # return HttpResponse("HELLO WORLD YOU ARE AT BLOG INDEX!!")
 
-def details(request, post_id):
+def details(request, slug):
     # static data 
     # post = next((item for item in posts if item['id'] == int(post_id)),None)
 
     # logger.debug("Post variable is %s", post)
-        # getting data from model by post id
-    post = Post.objects.get(pk = post_id)
+        # getting data from model by post 
+    try:
+      
+     post = Post.objects.get(slug = slug)
+    except Post.DoesNotExist:
+       raise Http404("Post doesn't exist")
 
+    
     return render(request, 'details.html', {'post': post})
 
 
