@@ -26,19 +26,15 @@ def index(request):
     # return HttpResponse("HELLO WORLD YOU ARE AT BLOG INDEX!!")
 
 def details(request, slug):
-    # static data 
-    # post = next((item for item in posts if item['id'] == int(post_id)),None)
-
-    # logger.debug("Post variable is %s", post)
-        # getting data from model by post 
-    try:
-      
+ 
+    try:   
      post = Post.objects.get(slug = slug)
+     related_posts = Post.objects.filter(category = post.category).exclude(pk=post.id)
     except Post.DoesNotExist:
        raise Http404("Post doesn't exist")
 
     
-    return render(request, 'details.html', {'post': post})
+    return render(request, 'details.html', {'post': post,'related_posts':related_posts})
 
 
 

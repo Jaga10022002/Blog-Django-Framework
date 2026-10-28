@@ -85,17 +85,12 @@ base.html is path name
 
                     <div class="d-flex align-items-center mt-auto pt-3 border-top">
 
-                        <img
-                            src="https://i.pravatar.cc/100?img=12"
-                            class="author-img me-2"
-                            alt="Author"
-                        >
+                      
 
                         <div class="flex-grow-1">
-                            <div class="fw-semibold">Rahul Sharma</div>
-                            <small class="text-secondary">
-                                Oct 15, 2026
-                            </small>
+                            {% comment %} get the category data as dynamic {% endcomment %}
+                            <div class="fw-semibold">{{post.category.name}}</div>
+                           
                         </div>
 
                         <a href="{% url 'blog:details' slug=post.slug %}"
