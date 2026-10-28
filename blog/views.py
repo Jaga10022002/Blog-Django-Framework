@@ -3,6 +3,7 @@ from django.http import HttpResponse,Http404
 from django.urls import reverse
 import logging
 from .models import Post
+from django.core.paginator import Paginator
 
 
 logger = logging.getLogger("Testing")
@@ -21,8 +22,18 @@ logger = logging.getLogger("Testing")
 def index(request):
     blog_title = "Latest Posts"
     # getting data from post model
-    posts = Post.objects.all()
-    return render(request,'index.html',{'blog_tit': blog_title,'post_list':posts})
+    posts = Post.objects.all().order_by('-created_at')
+
+    # Display 6 posts per page
+    paginator = Paginator(posts, 6)
+
+    # Get the current page number from the URL
+    page_number = request.GET.get('page')
+
+    # Return the requested page
+    page_obj = paginator.get_page(page_number)
+    return render(request,'index.html',{'blog_tit': blog_title,'page_obj': page_obj,
+        'posts': page_obj.object_list,})
     # return HttpResponse("HELLO WORLD YOU ARE AT BLOG INDEX!!")
 
 def details(request, slug):
