@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.http import HttpResponse,Http404
 from django.urls import reverse
 import logging
-from .models import Post
+from .models import Post,AboutUs
 from django.core.paginator import Paginator
 from .forms import ContactForm
 
@@ -81,4 +81,5 @@ def contact_view(request):
 
 # about page
 def blog_about(request):
+
     return render(request,'about.html')
