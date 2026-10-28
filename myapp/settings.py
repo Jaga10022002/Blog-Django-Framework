@@ -136,30 +136,26 @@ MAILERS = {
     },
 }
 
+from django.contrib.messages import constants as messages_constants
+
+# Bootstrap calls the red alert "danger", Django calls it "error"
+MESSAGE_TAGS = {messages_constants.ERROR: "danger"}
+
 LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-
-    'formatters': {
-        'simple': {
-            'format': '{levelname}:{name}:{message}',
-            'style': '{',
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "simple": {"format": "{levelname} {asctime} {name} | {message}", "style": "{"},
+    },
+    "handlers": {
+        "console": {"class": "logging.StreamHandler", "formatter": "simple"},
+        "file": {
+            "class": "logging.FileHandler",
+            "filename": BASE_DIR / "contact.log",
+            "formatter": "simple",
         },
     },
-
-    'handlers': {
-        'console': {
-            'class': 'logging.StreamHandler',
-            'level': 'DEBUG',
-            'formatter': 'simple',
-        },
-    },
-
-    'loggers': {
-        'blog': {
-            'handlers': ['console'],
-            'level': 'DEBUG',
-            'propagate': False,
-        },
+    "loggers": {
+        "Testing": {"handlers": ["console", "file"], "level": "DEBUG", "propagate": False},
     },
 }

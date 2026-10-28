@@ -1,10 +1,12 @@
 from django.shortcuts import render,redirect
+from django.contrib import messages
+
 from django.http import HttpResponse,Http404
 from django.urls import reverse
 import logging
 from .models import Post
 from django.core.paginator import Paginator
-
+from .forms import ContactForm
 
 logger = logging.getLogger("Testing")
 
@@ -55,3 +57,24 @@ def old_url_redirect(request):
 
 def new_url_view(request):
     return HttpResponse("This is the new URL")
+
+# contact page
+def contact_view(request):
+    if request.method == "POST":
+        form = ContactForm(request.POST)
+
+        if form.is_valid():
+            data = form.cleaned_data
+            logger.info(
+                "Contact form submitted | name=%s | email=%s | subject=%s | message=%s",
+                data["name"], data["email"], data["subject"], data["message"],
+            )
+            messages.success(request, "Thank you! Your message has been sent successfully.")
+            return redirect("blog:contact")   # redirect so refresh doesn't resubmit
+
+        logger.warning("Contact form validation failed: %s", form.errors.as_json())
+        messages.error(request, "Please correct the errors below and try again.")
+    else:
+        form = ContactForm()
+
+    return render(request, "contact.html", {"form": form})

@@ -10,7 +10,8 @@ urlpatterns = [
     # dynamic urls  if we need string we have to modify like <str:post_id>
     path("post/<str:slug>",views.details,name="details"),
     path("new_something_url",views.new_url_view,name="new_page_url"),
-    path("old_url",views.old_url_redirect,name="old_url")
+    path("old_url",views.old_url_redirect,name="old_url"),
+    path('contact',views.contact_view,name="contact")
 
 
 ]
