@@ -1,0 +1,268 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+    /* About hero */
+.about-hero {
+    background: linear-gradient(135deg, #f8faff, #ffffff);
+}
+
+.about-hero-image {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.about-image-wrapper:hover .about-hero-image {
+    transform: scale(1.04);
+}
+
+/* Mission and vision cards */
+.about-feature-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-feature-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08) !important;
+}
+
+.about-icon,
+.topic-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 65px;
+    height: 65px;
+    border-radius: 18px;
+    background-color: #eaf2ff;
+    color: #0d6efd;
+    font-size: 28px;
+}
+
+.topic-icon {
+    margin-bottom: 16px;
+}
+
+.about-topic-card {
+    border-radius: 18px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.about-topic-card:hover {
+    background-color: #f8faff;
+    transform: translateY(-4px);
+}
+
+/* Contact call-to-action */
+.about-cta {
+    background: linear-gradient(135deg, #0d6efd, #173b78);
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+    .about-hero-image {
+        height: 270px;
+    }
+
+    .display-4 {
+        font-size: 2.4rem;
+    }
+}
+</style>
+<!-- About Hero Section -->
+<section class="about-hero py-5">
+    <div class="container py-4">
+        <div class="row align-items-center g-5">
+
+            <div class="col-12 col-lg-6">
+                <span class="badge bg-primary-subtle text-primary rounded-pill px-3 py-2 mb-3">
+                    About Our Blog
+                </span>
+
+                <h1 class="display-4 fw-bold text-dark mb-4">
+                    Welcome to <span class="text-primary">MyBlog</span>
+                </h1>
+
+                <p class="lead text-secondary lh-lg">
+                    A place to explore ideas, discover new knowledge, and stay
+                    inspired through engaging articles and useful information.
+                </p>
+
+                <p class="text-muted lh-lg">
+                    Our blog shares articles, tutorials, insights, and practical
+                    tips to help readers learn new things and explore topics
+                    they care about. Whether you are a beginner or an experienced
+                    learner, there is always something new to discover.
+                </p>
+
+                <a href=""
+                   class="btn btn-primary btn-lg rounded-pill px-4 mt-3">
+                    Explore Articles &rarr;
+                </a>
+            </div>
+
+            <div class="col-12 col-lg-6">
+                <div class="about-image-wrapper rounded-4 overflow-hidden shadow">
+                    <img
+                        src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1000&q=80"
+                        alt="Notebook and workspace for writing blog articles"
+                        class="img-fluid about-hero-image"
+                    >
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- Our Story Section -->
+<section class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-9 text-center">
+
+            <span class="text-primary fw-semibold text-uppercase small">
+                Our Story
+            </span>
+
+            <h2 class="fw-bold mt-2 mb-4">Why We Started This Blog</h2>
+
+            <p class="text-secondary lh-lg">
+                MyBlog was created to make useful information easy to discover
+                and enjoyable to read. We believe that sharing knowledge,
+                experiences, and ideas can help people grow and see things
+                from new perspectives.
+            </p>
+
+            <p class="text-secondary lh-lg">
+                Our goal is to provide clear, engaging, and helpful content
+                that readers can apply in their everyday lives, learning
+                journeys, and professional development.
+            </p>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- Mission and Vision -->
+<section class="bg-light py-5">
+    <div class="container py-3">
+        <div class="row g-4">
+
+            <!-- Mission -->
+            <div class="col-12 col-md-6">
+                <div class="card h-100 border-0 shadow-sm rounded-4 p-4 p-md-5 about-feature-card">
+                    <div class="about-icon mb-4">
+                        <i class="bi bi-bullseye"></i>
+                    </div>
+
+                    <h3 class="fw-bold mb-3">Our Mission</h3>
+
+                    <p class="text-secondary lh-lg mb-0">
+                        Our mission is to share valuable, accessible, and
+                        engaging content that helps readers learn, solve
+                        problems, and discover new opportunities.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Vision -->
+            <div class="col-12 col-md-6">
+                <div class="card h-100 border-0 shadow-sm rounded-4 p-4 p-md-5 about-feature-card">
+                    <div class="about-icon mb-4">
+                        <i class="bi bi-eye"></i>
+                    </div>
+
+                    <h3 class="fw-bold mb-3">Our Vision</h3>
+
+                    <p class="text-secondary lh-lg mb-0">
+                        Our vision is to build a welcoming space where curiosity
+                        is encouraged, ideas are shared, and readers can
+                        continue learning and growing.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- What You Will Find -->
+<section class="container py-5">
+    <div class="text-center mb-5">
+        <h2 class="fw-bold">What You'll Find Here</h2>
+        <p class="text-muted mt-2">
+            Explore content designed to inform, inspire, and help you grow.
+        </p>
+    </div>
+
+    <div class="row g-4">
+
+        <div class="col-12 col-md-4">
+            <div class="text-center p-4 h-100 about-topic-card">
+                <div class="topic-icon mx-auto mb-3">
+                    <i class="bi bi-book-half"></i>
+                </div>
+                <h5 class="fw-bold">Helpful Articles</h5>
+                <p class="text-muted">
+                    Easy-to-understand articles covering useful ideas,
+                    concepts, and practical knowledge.
+                </p>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-4">
+            <div class="text-center p-4 h-100 about-topic-card">
+                <div class="topic-icon mx-auto mb-3">
+                    <i class="bi bi-lightbulb"></i>
+                </div>
+                <h5 class="fw-bold">Ideas & Insights</h5>
+                <p class="text-muted">
+                    Fresh perspectives, useful tips, and inspiration
+                    to help you explore something new.
+                </p>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-4">
+            <div class="text-center p-4 h-100 about-topic-card">
+                <div class="topic-icon mx-auto mb-3">
+                    <i class="bi bi-code-slash"></i>
+                </div>
+                <h5 class="fw-bold">Learning & Tutorials</h5>
+                <p class="text-muted">
+                    Practical guides and tutorials to help you develop
+                    your knowledge and technical skills.
+                </p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- Contact CTA -->
+<section class="container mb-5">
+    <div class="about-cta rounded-4 p-4 p-md-5 text-center text-white">
+
+        <h2 class="fw-bold mb-3">Let's Connect!</h2>
+
+        <p class="mb-4 text-white-50">
+            Have feedback, questions, or an idea to share?
+            We'd love to hear from you.
+        </p>
+
+        <a href=""
+           class="btn btn-light btn-lg rounded-pill px-5">
+            Contact Us &rarr;
+        </a>
+
+    </div>
+</section>
+
+{% endblock %}
